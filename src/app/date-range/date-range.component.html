@@ -1,0 +1,24 @@
+<div [formGroup]="rangeForm" flexLayout fxLayoutGap="0.25em">    
+    <mat-form-field>
+        <input readonly matInput name="from" [placeholder]="fromLabel"
+            (dateChange)="updateRange(FROM, $event)"
+            formControlName="from" 
+            [matDatepicker]="fromPicker" 
+            [min]="min" 
+            [max]="maxFromDate" />
+        <mat-error *ngIf="errors && rangeForm.hasError('required', 'from')">A "From date" is required</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fromPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>        
+        <input readonly matInput name="to" [placeholder]="toLabel"
+            (dateChange)="updateRange(TO, $event)"
+            formControlName="to"    
+            [matDatepicker]="toPicker"
+            [min]="minToDate"
+            [max]="max" />
+        <mat-error *ngIf="errors && rangeForm.hasError('required', 'to')">A "To date" is required</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+        <mat-datepicker #toPicker></mat-datepicker>
+    </mat-form-field>
+</div>

@@ -1,0 +1,7 @@
+<mat-selection-list #options (selectionChange)="selectionChanged($event)">    
+    <mat-list-option class="filter" 
+        *ngFor="let f of filters" 
+        [value]="f">
+        {{f}}
+    </mat-list-option>
+</mat-selection-list>

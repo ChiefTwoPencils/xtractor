@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'x-filter';
+  filters: string[] = [
+    "Super", "Great", "Awesome", "Terrific"
+  ];
+  selected: string[] = [];
+
+  setSelected(event: string[]) {
+    this.selected = event;
+  }
 }

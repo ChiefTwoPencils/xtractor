@@ -1,0 +1,22 @@
+<div fxLayout>
+    <mat-card fxFlex="16%">
+        <mat-card-title>Filter by</mat-card-title>
+        <mat-card-content>
+            <xf-filter-by 
+                [filters]="filters" 
+                (selected)="setSelected($event)">
+            </xf-filter-by>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button>Run</button>
+            <button mat-raised-button>Clear</button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card fxFlex="37%" *ngIf="filtersSelected">
+        <mat-card-title>Criteria</mat-card-title>
+        <xf-criteria *ngFor="let s of selected" [category]="s"></xf-criteria>        
+    </mat-card>
+    <mat-card fxFlex="37%" *ngIf="filtersSelected">
+        <xf-summary></xf-summary>
+    </mat-card>
+</div>
