@@ -2,14 +2,14 @@
     <mat-card fxFlex="16%">
         <mat-card-title>Filter by</mat-card-title>
         <mat-card-content>
-            <xf-filter-by 
+            <xf-filter-by #fb
                 [filters]="filters" 
                 (selected)="setSelected($event)">
             </xf-filter-by>
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button>Run</button>
-            <button mat-raised-button>Clear</button>
+            <button mat-raised-button (click)="fb.clear()">Clear</button>
         </mat-card-actions>
     </mat-card>
     <mat-card fxFlex="37%" *ngIf="filtersSelected">

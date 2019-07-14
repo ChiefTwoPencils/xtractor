@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, ViewChild, ElementRef, EventEmitter } from '@angular/core';
-import { MatSelectionListChange } from '@angular/material';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter } from '@angular/core';
+import { MatSelectionListChange, MatSelectionList } from '@angular/material';
 
 @Component({
   selector: 'xf-filter-by',
@@ -8,12 +8,22 @@ import { MatSelectionListChange } from '@angular/material';
 })
 export class FilterByComponent implements OnInit {
 
-  @Input() filters: string[] = [];
-  @Output() selected = new EventEmitter<string[]>();
+  @Input() 
+  private filters: string[] = [];
+
+  @Output() 
+  private selected = new EventEmitter<string[]>();
+
+  @ViewChild('options', {static: false}) 
+  private options: MatSelectionList;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  clear(): void {
+    this.options.deselectAll();
+    this.selected.emit([]);
   }
 
   selectionChanged(event: MatSelectionListChange): void {
@@ -23,5 +33,4 @@ export class FilterByComponent implements OnInit {
       .selected
       .map(opt => opt.value));
   }
-
 }

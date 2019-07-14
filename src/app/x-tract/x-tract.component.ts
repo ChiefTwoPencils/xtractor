@@ -13,8 +13,7 @@ export class XTractComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   setSelected(event: string[]) {
     this.selected = event;
