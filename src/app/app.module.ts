@@ -22,6 +22,7 @@ import { CriteriaComponent } from './criteria/criteria.component';
 import { SummaryComponent } from './summary/summary.component';
 import { DateRangeComponent } from './date-range/date-range.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SelectorComponent } from './selector/selector.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     XTractComponent,
     CriteriaComponent,
     SummaryComponent,
-    DateRangeComponent
+    DateRangeComponent,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,

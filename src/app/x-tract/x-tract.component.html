@@ -8,15 +8,24 @@
             </xf-filter-by>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-raised-button>Run</button>
-            <button mat-raised-button (click)="fb.clear()">Clear</button>
+            <button mat-raised-button [disabled]="!runnable">Run</button>
+            <button mat-raised-button (click)="clear()">Clear</button>
         </mat-card-actions>
     </mat-card>
     <mat-card fxFlex="37%" *ngIf="filtersSelected">
         <mat-card-title>Criteria</mat-card-title>
-        <xf-criteria *ngFor="let s of selected" [category]="s"></xf-criteria>        
+        <div *ngFor="let category of selected" [ngSwitch]="category">    
+                <xf-date-range *ngSwitchCase="'Awesome'" [label]="'Awesome'" (range)="updateRange(AWESOME, $event)"></xf-date-range>
+                <xf-date-range *ngSwitchCase="'Super'" [label]="'Super'" (range)="updateRange(SUPER, $event)"></xf-date-range>
+                <xf-selector *ngSwitchCase="'Great'" [multiple]="true" [options]="filters" [all]="true" (selected)="setGreatsSelected($event)">{{category}}-scott!</xf-selector>
+                <xf-selector *ngSwitchCase="'Terrific'">{{category}} and simplistic!</xf-selector>
+                <p *ngSwitchDefault><em><b>{{category}}: DOES NOT COMPUTE!</b></em></p>
+        </div>     
     </mat-card>
-    <mat-card fxFlex="37%" *ngIf="filtersSelected">
+    <mat-card fxFlex="37%" *ngIf="criteria.length > 0">
         <xf-summary></xf-summary>
     </mat-card>
 </div>
+<pre>{{greats | json}}</pre>
+<pre>({{criteria.length}}) : {{criteria | json}}</pre>
+<pre>({{selected.length}}) : {{selected | json}}</pre>

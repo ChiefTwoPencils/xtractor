@@ -1,0 +1,13 @@
+<form [formGroup]="selectForm">
+    <mat-select class="list" formControlName="selector" [multiple]="multiple">
+        <div *ngIf="all">
+            <mat-option #selectAll class="list-item" [value]="ALL" (click)="toggleAll()">Select all</mat-option>
+            <mat-divider></mat-divider>
+        </div>
+        <mat-option class="list-item" 
+            *ngFor="let o of options" 
+            [value]="o"
+            (click)="toggleSingle()">{{o}}
+        </mat-option>
+    </mat-select>
+</form>
